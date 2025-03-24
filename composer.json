@@ -1,5 +1,6 @@
 {
     "require": {
-        "mongodb/mongodb": "^1.20"
+        "mongodb/mongodb": "^1.20",
+        "php": "^8.1"
     }
 }
