@@ -1,0 +1,32 @@
+.profile-container {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.avatar-section img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.avatar-section input {
+    margin-top: 10px;
+}
+
+.info-section p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.info-section input {
+    padding: 5px;
+    width: 80%;
+    margin: 10px 0;
+}

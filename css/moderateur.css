@@ -1,0 +1,60 @@
+.moderation-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+th {
+    background-color: #333;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.ban-button {
+    background-color: #ff4d4d; /* Rouge clair */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espace entre l'icône et le texte */
+}
+
+.ban-button:hover {
+    background-color: #cc0000; /* Rouge plus foncé au survol */
+    transform: scale(1.05);
+}
+
+.ban-button i {
+    font-size: 16px;
+}

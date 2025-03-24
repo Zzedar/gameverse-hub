@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
+}
+
+canvas {
+    background: url("assets/backgrounds.png") no-repeat center;
+    background-size: cover;
+    display: block;
+    margin: auto;
+    border: 2px solid white;
+}
