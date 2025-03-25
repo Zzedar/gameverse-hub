@@ -3,7 +3,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$db = parse_url(getenv("JAWSDB_URL"));
+// Récupérer correctement la bonne variable d’environnement
+$db_url = getenv("JAWSDB_PUCE_URL") ?: $_ENV["JAWSDB_PUCE_URL"];
+$db = parse_url($db_url);
 
 try {
     $dsn = sprintf(
@@ -13,7 +15,6 @@ try {
         ltrim($db["path"], "/")
     );
 
-    // On force la connexion en TCP (pas de socket)
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -21,7 +22,6 @@ try {
         PDO::ATTR_PERSISTENT => false
     ];
 
-    // Crée la connexion
     $pdo = new PDO($dsn, $db["user"], $db["pass"], $options);
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
