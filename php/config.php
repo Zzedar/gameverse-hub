@@ -1,5 +1,4 @@
 <?php
-<?php
 $db = parse_url(getenv("JAWSDB_URL"));
 
 try {
@@ -19,4 +18,3 @@ try {
 }
 ?>
 
-?>
