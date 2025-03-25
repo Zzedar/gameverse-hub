@@ -1,20 +1,22 @@
 <?php
-// Vérifie si une session est déjà active avant de l'initialiser
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-$host = "localhost";
-$dbname = "gameverse_db";
-$username = "root"; // Remplace par ton utilisateur MySQL
-$password = ""; // Mets ton mot de passe MySQL si nécessaire
+<?php
+$db = parse_url(getenv("JAWSDB_URL"));
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-} catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
+    $pdo = new PDO(
+        sprintf(
+            "mysql://a1zqt1b9x4jzccnz:miyfjqpe2l6267ii@gi6kn64hu98hy0b6.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/x0hlz1shwi79uhfb",
+            $db["host"],
+            $db["port"],
+            ltrim($db["path"], "/")
+        ),
+        $db["user"],
+        $db["pass"]
+    );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
 }
+?>
+
 ?>
