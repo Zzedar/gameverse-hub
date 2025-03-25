@@ -3,6 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Récupérer correctement la bonne variable d’environnement
 $db_url = getenv("JAWSDB_PUCE_URL") ?: $_ENV["JAWSDB_PUCE_URL"];
 $db = parse_url($db_url);
