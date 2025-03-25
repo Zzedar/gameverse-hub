@@ -8,7 +8,7 @@ header('Content-Type: application/json');
 
 try {
     $mongo = new Client(getenv("MONGODB_URI"));
-    $db = $mongo->gameverse_db; // Base de données
+    $db = $mongo->Gameverse_db; // Base de données
     $collection = $db->messages; // Collection des messages
 
     // Vérifier que l'utilisateur est bien connecté
