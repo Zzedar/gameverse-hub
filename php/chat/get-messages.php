@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
 
 try {
     $mongo = new Client(getenv("MONGODB_URI"));
-    $db = $mongo->gameverse_db; // Base MongoDB
+    $db = $mongo->Gameverse_db; // Base MongoDB
     $collection = $db->messages; // Collection des messages
 
     $messages = $collection->find([], ['sort' => ['timestamp' => 1]]);
