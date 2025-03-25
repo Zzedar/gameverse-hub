@@ -7,7 +7,7 @@ use MongoDB\Client;
 header('Content-Type: application/json');
 
 try {
-    $mongo = new Client("mongodb://localhost:27017");
+    $mongo = new Client(getenv("MONGODB_URI"));
     $db = $mongo->gameverse_db; // Base de données
     $collection = $db->messages; // Collection des messages
 
