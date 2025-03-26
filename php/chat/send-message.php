@@ -9,12 +9,13 @@ header('Content-Type: application/json');
 try {
     $uri = "mongodb+srv://dylanfragnaud16:2orxZj2vzbn9chBI@cluster0.w1i7o.mongodb.net/Gameverse_db?retryWrites=true&w=majority&tls=true";
 
-    $client = new Client($uri, [], [
+    $client = new MongoDB\Client($uri, [], [
         'ssl' => true,
         'tlsAllowInvalidCertificates' => true
     ]);
-    $db = $mongo->Gameverse_db; // Base de données
-    $collection = $db->messages; // Collection des messages
+
+    $db = $client->Gameverse_db;
+    $collection = $db->messages;
 
     // Vérifier que l'utilisateur est bien connecté
     if (!isset($_SESSION["user"]["username"])) {

@@ -12,12 +12,13 @@ ini_set('display_errors', 1);
 try {
     $uri = "mongodb+srv://dylanfragnaud16:2orxZj2vzbn9chBI@cluster0.w1i7o.mongodb.net/Gameverse_db?retryWrites=true&w=majority&tls=true";
 
-    $client = new Client($uri, [], [
+    $client = new MongoDB\Client($uri, [], [
         'ssl' => true,
         'tlsAllowInvalidCertificates' => true
     ]);
-    $db = $mongo->Gameverse_db; // Base MongoDB
-    $collection = $db->messages; // Collection des messages
+
+    $db = $client->Gameverse_db;
+    $collection = $db->messages;
 
     $messages = $collection->find([], ['sort' => ['timestamp' => 1]]);
     $messageArray = [];
