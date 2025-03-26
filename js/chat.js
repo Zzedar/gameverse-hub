@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let sender = "<?php echo $_SESSION['user']['username']; ?>"; // Récupère l'utilisateur connecté
+    let sender = typeof CURRENT_USER !== "undefined" ? CURRENT_USER : null; // Récupère l'utilisateur connecté
     let lastMessageCount = 0; // Variable pour suivre le nombre de messages
 
     function loadMessages() {
