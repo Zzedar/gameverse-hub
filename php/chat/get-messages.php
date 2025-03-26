@@ -10,7 +10,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 try {
-    $mongo = new Client(getenv("MONGODB_URI"));
+    $mongo = new MongoDB\Client(getenv("MONGODB_URI"), [], [
+        'ssl' => true,
+    ]);
     $db = $mongo->Gameverse_db; // Base MongoDB
     $collection = $db->messages; // Collection des messages
 
