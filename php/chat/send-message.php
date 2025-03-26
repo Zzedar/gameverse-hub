@@ -7,9 +7,7 @@ use MongoDB\Client;
 header('Content-Type: application/json');
 
 try {
-    $mongo = new MongoDB\Client(getenv("MONGODB_URI"), [], [
-        'ssl' => true,
-    ]);
+    $mongo = new MongoDB\Client(getenv("MONGODB_URI"));
     $db = $mongo->Gameverse_db; // Base de données
     $collection = $db->messages; // Collection des messages
 
