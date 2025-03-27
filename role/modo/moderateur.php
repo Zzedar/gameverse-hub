@@ -12,6 +12,7 @@ if (!isset($_SESSION["user"]) || !in_array($_SESSION["user"]["role"], ["admin", 
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modération - GameVerse Hub</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/moderateur.css">
