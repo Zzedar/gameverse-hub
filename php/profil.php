@@ -63,7 +63,7 @@ $user = $_SESSION["user"];
         <?php
         $avatar = !empty($user["avatar"]) ? $user["avatar"] : "default.png";
         ?>
-        <img src="../uploads/<?php echo htmlspecialchars($avatar) . '?t=' . time(); ?>" alt="Avatar" id="avatar">
+        <img src="<?php echo htmlspecialchars($avatar); ?>" alt="Avatar" id="avatar">
 
         <form action="update-avatar.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="avatar">
