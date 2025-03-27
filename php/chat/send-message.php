@@ -8,6 +8,7 @@ header('Content-Type: application/json');
 
 try {
     $uri = getenv("MONGODB_URI");
+    $mongo = new Client(getenv("MONGODB_URI"));
 
     $client = new MongoDB\Client($uri, [], [
         'ssl' => true,

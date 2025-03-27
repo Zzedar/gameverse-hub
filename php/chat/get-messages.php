@@ -11,6 +11,7 @@ ini_set('display_errors', 1);
 
 try {
     $uri = getenv("MONGODB_URI");
+    $mongo = new Client(getenv("MONGODB_URI"));
 
     $client = new MongoDB\Client($uri, [], [
         'ssl' => true,
