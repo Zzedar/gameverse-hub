@@ -231,3 +231,60 @@ h1 {
     background-color: #0056b3; /* Bleu foncé */
     transform: scale(1.05);
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .banner h1 {
+        font-size: 28px;
+    }
+
+    .banner p {
+        font-size: 16px;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        width: 90%;
+    }
+
+    #chat-box,
+    #input-container,
+    #users-box {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    #input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #message-input,
+    #send-button {
+        width: 100%;
+    }
+
+    .form-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
