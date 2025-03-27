@@ -30,6 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["avatar"])) {
     $tempFile = $_FILES["avatar"]["tmp_name"];
 
     // Upload vers Cloudinary
+    var_dump($_ENV['CLOUDINARY_CLOUD_NAME']);
+    var_dump($_ENV['CLOUDINARY_API_KEY']);
+    var_dump($_ENV['CLOUDINARY_API_SECRET']);
+    exit();
+
     $cloudinary = new Cloudinary();
     try {
         $result = $cloudinary->uploadApi()->upload($tempFile, [
