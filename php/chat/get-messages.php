@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 try {
-    $uri = "mongodb+srv://dylanfragnaud16:2orxZj2vzbn9chBI@cluster0.w1i7o.mongodb.net/Gameverse_db?retryWrites=true&w=majority&tls=true";
+    $uri = getenv("MONGODB_URI");
 
     $client = new MongoDB\Client($uri, [], [
         'ssl' => true,
