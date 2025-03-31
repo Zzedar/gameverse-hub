@@ -43,7 +43,7 @@ let player = {
 let obstacles = [];
 // Ajuster la vitesse selon l'appareil (mobile vs PC)
 let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-let obstacleSpeed = isMobile ? 5 : 4; // 📱 5 sur mobile, 🖥️ 4 sur PC
+let obstacleSpeed = isMobile ? 5 : 4.5; // 📱 5 sur mobile, 🖥️ 4 sur PC
 let spawnRate = 90;
 let frameCount = 0;
 let score = 0;
