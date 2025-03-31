@@ -43,7 +43,7 @@ let player = {
 let obstacles = [];
 // Ajuster la vitesse selon l'appareil (mobile vs PC)
 let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-let obstacleSpeed = isMobile ? 5 : 2; // 📱 5 sur mobile, 🖥️ 3 sur PC
+let obstacleSpeed = isMobile ? 5 : 3; // 📱 5 sur mobile, 🖥️ 3 sur PC
 let spawnRate = 90;
 let frameCount = 0;
 let score = 0;
@@ -51,7 +51,7 @@ let gameOver = false;
 
 // Défilement du fond
 let bgX = 0;
-const bgSpeed = isMobile ? 2 : 1;
+const bgSpeed = isMobile ? 2 : 2;
 
 // Gestion des touches
 document.addEventListener("keydown", function(event) {
