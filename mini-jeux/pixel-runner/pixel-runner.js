@@ -60,6 +60,15 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
+// 👇 Support mobile : touche l'écran pour sauter
+canvas.addEventListener("touchstart", function () {
+    if (player.grounded && !gameOver) {
+        player.velocityY = player.jumpPower;
+        player.grounded = false;
+        jumpSound.play();
+    }
+});
+
 // Fonction pour sauvegarder le score
 function saveScore() {
     console.log("Envoi du score :", score); // ✅ Vérification dans la console
