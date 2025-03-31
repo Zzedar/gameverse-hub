@@ -51,7 +51,7 @@ let gameOver = false;
 
 // Défilement du fond
 let bgX = 0;
-const bgSpeed = isMobile ? 2 : 2;
+const bgSpeed = isMobile ? 2 : 1;
 
 // Gestion des touches
 document.addEventListener("keydown", function(event) {
