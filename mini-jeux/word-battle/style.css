@@ -45,3 +45,24 @@ button {
     font-size: 20px;
     font-weight: bold;
 }
+
+#player-word {
+    width: 90%;
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+}
+
+#submit-word {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+    background-color: #0a74da;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

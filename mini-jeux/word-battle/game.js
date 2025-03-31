@@ -1,10 +1,27 @@
-const wordInput = document.getElementById("word-input");
-const playButton = document.getElementById("play-button");
+const wordInput = document.getElementById("player-word"); // correspond au champ dans ton HTML
+const playButton = document.getElementById("submit-word"); // correspond au bouton "Valider"
 const playerWordDisplay = document.getElementById("player-word");
 const aiWordDisplay = document.getElementById("ai-word");
 const roundResult = document.getElementById("round-result");
 const playerScoreDisplay = document.getElementById("player-score");
 const aiScoreDisplay = document.getElementById("ai-score");
+
+const lettersContainer = document.getElementById("letters");
+
+// Exemple : générer 7 lettres aléatoires
+function generateLetters() {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const letters = [];
+    for (let i = 0; i < 7; i++) {
+        const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        letters.push(randomLetter);
+    }
+    lettersContainer.textContent = letters.join(" ");
+}
+
+// Appeler la fonction au démarrage
+generateLetters();
+
 
 let playerScore = 0;
 let aiScore = 0;
@@ -34,6 +51,7 @@ function playRound() {
         return;
     }
 
+
     playerWordDisplay.textContent = playerWord;
     aiWordDisplay.textContent = aiWord;
 
@@ -55,6 +73,8 @@ function playRound() {
     playerScoreDisplay.textContent = playerScore;
     aiScoreDisplay.textContent = aiScore;
     round++;
+
+    wordInput.value = "";
 
     // 📌 Vérifier si le jeu est terminé
     if (round > 5) {
@@ -112,4 +132,6 @@ wordInput.addEventListener("keydown", function (event) {
 });
 
 // 📌 Lancer le jeu
-playButton.addEventListener("click", playRound);
+playButton.addEventListener("click", function () {
+    playRound();
+});
