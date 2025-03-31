@@ -69,6 +69,11 @@ if (!isset($_SESSION["user"])) {
     <input type="text" id="word-input" placeholder="Entrez votre mot...">
     <button id="submit-word">Valider</button>
 
+    <!-- Ajouts nécessaires pour l'affichage des résultats -->
+    <p>Mot joué : <span id="player-word"></span></p>
+    <p>Mot IA : <span id="ai-word"></span></p>
+    <p id="round-result"></p>
+
     <p id="timer">⏳ Temps restant : <span id="time">30</span>s</p>
     <p id="score">Score : <span id="player-score">0</span></p>
 </div>
