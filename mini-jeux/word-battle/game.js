@@ -22,6 +22,21 @@ function generateLetters() {
 // Appeler la fonction au démarrage
 generateLetters();
 
+// ⏱️ Timer
+let timeLeft = 30;
+const timeDisplay = document.getElementById("time");
+
+function updateTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        timeDisplay.textContent = timeLeft;
+    } else {
+        clearInterval(timerInterval);
+        showGameOver(); // Fin du jeu quand le temps est écoulé
+    }
+}
+
+const timerInterval = setInterval(updateTimer, 1000);
 
 let playerScore = 0;
 let aiScore = 0;
@@ -37,7 +52,17 @@ function generateAiWord() {
 
 // 📌 Vérifier si le mot du joueur est valide
 function isValidWord(word) {
-    return validWords.includes(word.toLowerCase()); // Vérification en minuscule
+    const availableLetters = lettersContainer.textContent.replace(/\s+/g, "").toLowerCase().split(""); // lettres dispo
+    const usedLetters = word.toLowerCase().split("");
+
+    // Vérifie que chaque lettre du mot est présente dans les lettres disponibles (en tenant compte du nombre)
+    for (let letter of usedLetters) {
+        const index = availableLetters.indexOf(letter);
+        if (index === -1) return false; // Lettre absente
+        availableLetters.splice(index, 1); // Retire la lettre utilisée
+    }
+
+    return validWords.includes(word.toLowerCase());
 }
 
 // 📌 Jouer une manche
