@@ -232,20 +232,47 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Responsive Design */
+/* Hamburger menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 3px;
+    background: white;
+    margin: 4px 0;
+    width: 25px;
+    border-radius: 2px;
+}
+
+/* Responsive Design + Hamburger */
 @media screen and (max-width: 768px) {
     header {
         flex-direction: column;
         align-items: flex-start;
     }
 
+    .menu-toggle {
+        display: flex;
+    }
+
     nav ul {
+        display: none;
         flex-direction: column;
         width: 100%;
+        margin-top: 10px;
         padding: 0;
     }
 
+    nav ul.show {
+        display: flex;
+    }
+
     nav ul li {
+        text-align: left;
+        padding-left: 20px;
         margin: 10px 0;
     }
 
@@ -288,3 +315,4 @@ h1 {
         margin: 20px auto;
     }
 }
+

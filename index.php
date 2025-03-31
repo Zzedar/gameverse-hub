@@ -14,6 +14,11 @@ session_start();
 
 <header>
     <div class="logo">GameVerse Hub</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <nav>
         <ul>
             <li><a href="index.php">Accueil</a></li>
@@ -71,6 +76,15 @@ session_start();
 <footer>
     <p>&copy; 2025 GameVerse Hub - Tous droits réservés</p>
 </footer>
+
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector("nav ul");
+        nav.classList.toggle("show");
+    }
+</script>
+
+
 
 </body>
 </html>
