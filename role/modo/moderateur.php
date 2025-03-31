@@ -107,7 +107,7 @@ if (!isset($_SESSION["user"]) || !in_array($_SESSION["user"]["role"], ["admin", 
         }
 
         if (confirm("Voulez-vous vraiment supprimer ce message ?")) {
-            fetch("../../php/chat/delete-message.php", {
+            fetch("delete-message.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id: messageId })
