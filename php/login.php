@@ -16,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "id" => $user["id"],
             "username" => $user["username"],
             "email" => $user["email"],
-            "role" => $user["role"]
+            "role" => $user["role"],
+            "avatar" => $user["avatar"] ?? "default.png" // 🔥 Ajout de l'avatar, avec fallback
         ];
 
         // ✅ Redirection après connexion
