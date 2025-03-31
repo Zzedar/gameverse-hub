@@ -1,4 +1,4 @@
-const wordInput = document.getElementById("player-word"); // correspond au champ dans ton HTML
+const wordInput = document.getElementById("word-input");// correspond au champ dans ton HTML
 const playButton = document.getElementById("submit-word"); // correspond au bouton "Valider"
 const playerWordDisplay = document.getElementById("player-word");
 const aiWordDisplay = document.getElementById("ai-word");

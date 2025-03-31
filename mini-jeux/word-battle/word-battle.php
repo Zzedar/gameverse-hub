@@ -66,7 +66,7 @@ if (!isset($_SESSION["user"])) {
     <div id="letters"></div>
 
     <h2>Votre mot :</h2>
-    <input type="text" id="player-word" placeholder="Entrez votre mot...">
+    <input type="text" id="word-input" placeholder="Entrez votre mot...">
     <button id="submit-word">Valider</button>
 
     <p id="timer">⏳ Temps restant : <span id="time">30</span>s</p>
