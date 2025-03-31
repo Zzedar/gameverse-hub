@@ -8,13 +8,18 @@ const aiScoreDisplay = document.getElementById("ai-score");
 
 const lettersContainer = document.getElementById("letters");
 
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const frequentLetters = "aeiourtnslcm"; // lettres les plus courantes en FR
+
 // Exemple : générer 7 lettres aléatoires
 function generateLetters() {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
     const letters = [];
     for (let i = 0; i < 7; i++) {
-        const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-        letters.push(randomLetter);
+        const useCommon = Math.random() < 0.7; // 70% de lettres fréquentes
+        const letter = useCommon
+            ? frequentLetters[Math.floor(Math.random() * frequentLetters.length)]
+            : alphabet[Math.floor(Math.random() * alphabet.length)];
+        letters.push(letter);
     }
     lettersContainer.textContent = letters.join(" ");
 }
@@ -43,7 +48,7 @@ let aiScore = 0;
 let round = 1;
 
 // 📌 Liste de mots valides (exemple, peut être remplacée par un dictionnaire externe)
-const validWords = ["chat", "chien", "maison", "table", "soleil", "étoile", "livre", "ordinateur", "internet", "musique", "bateau", "avion", "voiture", "fenêtre", "porte", "clavier"];
+let validWords = [];
 
 // 📌 Générer un mot aléatoire pour l'IA
 function generateAiWord() {
@@ -65,10 +70,27 @@ function isValidWord(word) {
     return validWords.includes(word.toLowerCase());
 }
 
+// Charger les mots depuis le fichier JSON
+fetch("mots-fr.json")
+    .then(response => response.json())
+    .then(data => {
+        validWords = data;
+        console.log("✅ Liste de mots chargée :", validWords.length + " mots");
+    })
+    .catch(error => console.error("❌ Erreur chargement mots :", error));
+
+
 // 📌 Jouer une manche
 function playRound() {
     let playerWord = wordInput.value.trim().toLowerCase();
     let aiWord = generateAiWord();
+
+    if (validWords.length === 0) {
+        roundResult.textContent = "⏳ Chargement des mots... Attendez une seconde.";
+        roundResult.style.color = "orange";
+        return;
+    }
+
 
     if (!isValidWord(playerWord)) {
         roundResult.textContent = "❌ Mot invalide ! Essayez un vrai mot.";
