@@ -52,8 +52,26 @@ let validWords = [];
 
 // 📌 Générer un mot aléatoire pour l'IA
 function generateAiWord() {
-    return validWords[Math.floor(Math.random() * validWords.length)];
+    const availableLetters = lettersContainer.textContent.replace(/\s+/g, "").toLowerCase().split("");
+
+    // Filtrer les mots valides qui peuvent être construits avec ces lettres
+    const possibleWords = validWords.filter(word => {
+        const tempLetters = [...availableLetters];
+        for (let letter of word) {
+            const index = tempLetters.indexOf(letter);
+            if (index === -1) return false;
+            tempLetters.splice(index, 1);
+        }
+        return true;
+    });
+
+    // Si aucun mot possible, renvoyer un mot bidon ou vide
+    if (possibleWords.length === 0) return "";
+
+    // Sinon, choisir un mot au hasard parmi ceux possibles
+    return possibleWords[Math.floor(Math.random() * possibleWords.length)];
 }
+
 
 // 📌 Vérifier si le mot du joueur est valide
 function isValidWord(word) {
