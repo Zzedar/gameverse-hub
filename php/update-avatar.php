@@ -23,10 +23,15 @@ $cloudinary = new Cloudinary([
 
 $user_id = $_SESSION["user"]["id"];
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["avatar"])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST"
+    && isset($_FILES["avatar"])
+    && $_FILES["avatar"]["error"] === UPLOAD_ERR_OK
+    && $_FILES["avatar"]["size"] > 0
+) {
     $tempFile = $_FILES["avatar"]["tmp_name"];
 
     try {
+        // Upload vers Cloudinary
         $result = $cloudinary->uploadApi()->upload($tempFile, [
             'folder' => 'avatars_gameverse',
             'public_id' => "user_" . $user_id,
@@ -49,5 +54,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["avatar"])) {
         echo json_encode(["error" => "Erreur Cloudinary : " . $e->getMessage()]);
     }
 } else {
-    echo json_encode(["error" => "Aucun fichier reçu"]);
+    echo json_encode(["error" => "Aucun fichier valide reçu"]);
 }

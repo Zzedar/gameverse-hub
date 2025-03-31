@@ -72,6 +72,7 @@ $user = $_SESSION["user"];
 
         <form action="update-avatar.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="avatar" accept="image/*" required>
+            <p id="fileName" style="font-size: 14px;"></p>
             <button type="submit">Changer l'avatar</button>
         </form>
     </div>
