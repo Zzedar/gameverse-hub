@@ -107,15 +107,27 @@ if (!isset($_SESSION["user"]) || !in_array($_SESSION["user"]["role"], ["admin", 
         }
 
         if (confirm("Voulez-vous vraiment supprimer ce message ?")) {
-            fetch(`delete-message.php?id=${messageId}`)
+            fetch("../../php/chat/delete-message.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id: messageId })
+            })
                 .then(response => response.json())
                 .then(data => {
-                    alert(data.message);
-                    loadMessages(); // Recharge les messages après suppression
+                    if (data.success) {
+                        alert("✅ Message supprimé !");
+                        loadMessages(); // Recharge les messages
+                    } else {
+                        alert("❌ Erreur : " + data.error);
+                    }
                 })
-                .catch(error => console.error("Erreur suppression :", error));
+                .catch(error => {
+                    console.error("Erreur suppression :", error);
+                    alert("❌ Erreur réseau !");
+                });
         }
     }
+
 
     function loadOnlineUsers() {
         fetch("../../get-online-users.php")
