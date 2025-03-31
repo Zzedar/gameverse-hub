@@ -9,10 +9,8 @@ if (!isset($_SESSION["user"])) {
 require '../vendor/autoload.php';
 
 use Cloudinary\Cloudinary;
-use Cloudinary\Configuration\Configuration;
 
-// Configuration avec variables Render
-Configuration::instance([
+$cloudinary = new Cloudinary([
     'cloud' => [
         'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'],
         'api_key'    => $_ENV['CLOUDINARY_API_KEY'],
@@ -22,7 +20,6 @@ Configuration::instance([
         'secure' => true
     ]
 ]);
-
 
 $user_id = $_SESSION["user"]["id"];
 
