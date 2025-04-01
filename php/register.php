@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <li><a href="../index.php">Accueil</a></li>
             <li><a href="chat/chat.php">Chat</a></li>
             <li><a href="tournois.php">Tournois</a></li>
-            <li><a href="mini-jeux.php">Mini-Jeux</a></li>
+            <li><a href="../mini-jeux/mini-jeux.php">Mini-Jeux</a></li>
 
             <?php if (isset($_SESSION["user"])): ?>
                 <li><a href="profil.php">Profil</a></li>
