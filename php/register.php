@@ -6,27 +6,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    $role = 'user';
 
-    // Vérifier si l'utilisateur existe déjà
-    $role = 'user'; // 🔹 Définit le rôle de base
+    // Vérifie si le pseudo ou l'email existe déjà
+    $check = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+    $check->execute([$username, $email]);
 
-    $stmt = $pdo->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
-    if ($stmt->execute([$username, $email, $hashedPassword, $role]))     {
-        header("Location: login.php");
-        exit();
-    }
-
-    $stmt->execute([$username, $email]);
-    if ($stmt->fetch()) {
-        $error = "⚠ Nom d'utilisateur ou email déjà utilisé.";
+    if ($check->fetch()) {
+        $error = "⚠️ Ce pseudo ou cet email est déjà utilisé.";
     } else {
-        // Insérer l'utilisateur en base
-        $stmt = $pdo->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, 'user')");
-        if ($stmt->execute([$username, $email, $hashedPassword])) {
-            header("Location: login.php"); // Rediriger après inscription
+        // Si tout est bon, on insère le nouvel utilisateur
+        $stmt = $pdo->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+        if ($stmt->execute([$username, $email, $hashedPassword, $role])) {
+            header("Location: login.php");
             exit();
         } else {
-            $error = "⚠ Erreur lors de l'inscription.";
+            $error = "❌ Une erreur est survenue lors de l'inscription.";
         }
     }
 }
